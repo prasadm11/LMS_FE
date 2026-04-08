@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { loginUser } from "../api/authApi";
+import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
+
+
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -20,7 +26,7 @@ const LoginPage = () => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  // ✅ Validation
+  //  Validation
   const validate = () => {
     const newErrors = {
       email: "",
@@ -48,6 +54,18 @@ const LoginPage = () => {
       setLoading(true);
       const res = await loginUser({ email, password });
       localStorage.setItem("token", res.token);
+      const decodedToken: any = jwtDecode(res.token);
+      // console.log("decoded token is", decodedToken);
+
+      const role = decodedToken.role || decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+
+      //redirect to page based on role
+      if (role === "Admin") {
+      navigate("/admin-dashboard");
+    } else {
+      navigate("/user-dashboard");
+    }
+
     } catch (error) {
       console.error("Login failed", error);
     } finally {
