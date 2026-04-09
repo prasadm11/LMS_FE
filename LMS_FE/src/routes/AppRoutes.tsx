@@ -4,7 +4,7 @@ import AdminDashboard from "../features/auth/pages/AdminDashboard";
 import UserDashboard from "../features/auth/pages/UserDashboard";
 import ProtectedRoute from "./ProtectedRoute";
 import AdminLayout from "../layouts/AdminLayout";
-
+import BooksPage from "../features/book/pages/BooksPage";
 const AppRoutes = () => {
   return (
     <BrowserRouter>
@@ -18,6 +18,16 @@ const AppRoutes = () => {
             <ProtectedRoute role="Admin">
               <AdminLayout>
                 <AdminDashboard />
+              </AdminLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin-books"
+          element={
+            <ProtectedRoute role="Admin">
+              <AdminLayout>
+              < BooksPage />
               </AdminLayout>
             </ProtectedRoute>
           }
