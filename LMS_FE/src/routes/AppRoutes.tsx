@@ -3,6 +3,7 @@ import LoginPage from "../features/auth/pages/LoginPage";
 import AdminDashboard from "../features/auth/pages/AdminDashboard";
 import UserDashboard from "../features/auth/pages/UserDashboard";
 import ProtectedRoute from "./ProtectedRoute";
+import AdminLayout from "../layouts/AdminLayout";
 
 const AppRoutes = () => {
   return (
@@ -15,7 +16,9 @@ const AppRoutes = () => {
           path="/admin-dashboard"
           element={
             <ProtectedRoute role="Admin">
-              <AdminDashboard />
+              <AdminLayout>
+                <AdminDashboard />
+              </AdminLayout>
             </ProtectedRoute>
           }
         />
