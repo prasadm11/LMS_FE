@@ -232,7 +232,7 @@ const systemData = [
           outerRadius={85}
           paddingAngle={3}
         >
-          {borrowChartData.map((entry, index) => {
+          {borrowChartData.map((_, index) => {
             const gradients = [
               "url(#colorActive)",
               "url(#colorReturned)",
