@@ -5,6 +5,8 @@ import UserDashboard from "../features/auth/pages/UserDashboard";
 import ProtectedRoute from "./ProtectedRoute";
 import AdminLayout from "../layouts/AdminLayout";
 import BooksPage from "../features/book/pages/BooksPage";
+import AdminBorrowDashboard from "../features/borrow/admin/pages/AdminBorrowDashboard";
+import UsersPage from "../features/user/pages/UsersPage";
 const AppRoutes = () => {
   return (
     <BrowserRouter>
@@ -27,7 +29,27 @@ const AppRoutes = () => {
           element={
             <ProtectedRoute role="Admin">
               <AdminLayout>
-              < BooksPage />
+                < BooksPage />
+              </AdminLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin-borrow"
+          element={
+            <ProtectedRoute role="Admin">
+              <AdminLayout>
+                <AdminBorrowDashboard />
+              </AdminLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin-users"
+          element={
+            <ProtectedRoute role="Admin">
+              <AdminLayout>
+                <UsersPage />
               </AdminLayout>
             </ProtectedRoute>
           }
