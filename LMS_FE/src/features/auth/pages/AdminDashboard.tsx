@@ -62,7 +62,7 @@ const AdminDashboard = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-full">
+      <div className="flex justify-center py-10 items-center h-full">
         <div className="animate-spin h-8 w-8 border-2 border-white border-t-transparent rounded-full"></div>
       </div>
     );

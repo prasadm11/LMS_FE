@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { getAllBooks, deleteBook, addBook, updateBook, getBookById } from "../api/booksApi";
+import { getAllBooks, deleteBook, addBook, updateBook, getBookById } from "../../api/booksApi";
 
-const BooksPage = () => {
+
+const AdminBooksPage = () => {
   const [books, setBooks] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
@@ -262,4 +263,4 @@ const BooksPage = () => {
 );
 };
 
-export default BooksPage;
+export default AdminBooksPage;
