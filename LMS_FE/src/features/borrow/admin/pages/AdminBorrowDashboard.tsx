@@ -48,6 +48,13 @@ const AdminBorrowDashboard = () => {
   useEffect(() => {
     fetchData();
   }, []);
+  if (loading) {
+    return (
+      <div className="text-center py-10 text-gray-400">
+        Loading dashboard...
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
