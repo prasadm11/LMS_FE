@@ -41,7 +41,11 @@ const UsersPage = () => {
       </div>
 
       {loading ? (
-        <p>Loading...</p>
+
+      <div className="flex justify-center py-10  items-center h-full">
+        <div className="animate-spin h-8 w-8 border-2 border-white border-t-transparent rounded-full"></div>
+      </div>
+
       ) : (
         <div className="overflow-x-auto bg-white/5 p-4 rounded-xl">
           <table className="w-full text-left">

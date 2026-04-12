@@ -34,6 +34,7 @@ const BooksPage = () => {
     fetchBooks();
   }, []);
 
+
   const handleDelete = async (id: number) => {
     try {
       await deleteBook(id);
@@ -207,7 +208,10 @@ const BooksPage = () => {
     <div className="bg-white/5 backdrop-blur-xl rounded-xl border border-white/10 shadow-lg overflow-hidden">
 
       {loading ? (
-        <div className="p-6 text-center text-gray-400">Loading...</div>
+      <div className="flex justify-center py-10  items-center h-full">
+        <div className="animate-spin h-8 w-8 border-2 border-white border-t-transparent rounded-full"></div>
+      </div>
+
       ) : (
         <table className="w-full text-left">
           <thead className="bg-white/10 text-gray-300">
