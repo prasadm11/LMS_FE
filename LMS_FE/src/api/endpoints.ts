@@ -29,5 +29,14 @@ export const API_ENDPOINTS = {
       UPDATE_USER : "User/UpdateUser",
       DELETE_USER : "User/DeleteUser",
       GET_USER_BY_ID : "User/GetUserById"
-  }
+  },
+
+  BORROW_REQUEST: {
+    CREATE_BORROW_REQUEST: "BorrowRequest/CreateBorrowRequest",
+    GET_ALL_PENDING: "BorrowRequest/GetAllPendingBorrowRequests",
+    APPROVE_REQUEST: "BorrowRequest/ApproveRequest",
+    REJECT_REQUEST: "BorrowRequest/RejectRequest",
+    CREATE_RETURN_REQUEST: "BorrowRequest/CreateReturnBookRequest",
+    CREATE_RENEW_REQUEST: "BorrowRequest/CreateRenewBookRequest"
+  },
 };

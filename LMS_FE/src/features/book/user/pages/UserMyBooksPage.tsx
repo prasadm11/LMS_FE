@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import {
   getUserBorrowHistory,
-  returnBook,
-  renewBook,
   payFine,
 } from "../../../borrow/api/borrowApi";
+import {
+  createReturnRequest,
+  createRenewRequest,
+} from "../../../borrow/api/borrowRequest";
 import { getUserFromToken } from "../../../../utils/auth";
 
 const UserMyBooksPage = () => {
@@ -41,8 +43,8 @@ const UserMyBooksPage = () => {
 
   const handleReturn = async (borrowId: number) => {
     try {
-      await returnBook({ borrowId });
-      showToast("Book returned successfully");
+      await createReturnRequest({ borrowRecordId: borrowId });
+      showToast("Return request sent for approval");
       fetchBooks();
     } catch (err) {
       console.error("Return failed", err);
@@ -51,8 +53,8 @@ const UserMyBooksPage = () => {
 
   const handleRenew = async (borrowId: number) => {
     try {
-      await renewBook({ borrowId });
-      showToast("Book renewed successfully");
+      await createRenewRequest({ borrowRecordId: borrowId });
+      showToast("Renew request sent for approval");
       fetchBooks();
     } catch (err) {
       console.error("Renew failed", err);

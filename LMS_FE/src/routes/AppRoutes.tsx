@@ -11,6 +11,7 @@ import UsersPage from "../features/user/pages/UsersPage";
 import UserBrowseBooksPage from "../features/book/user/pages/UserBrowseBooksPage";
 import UserMyBooksPage from "../features/book/user/pages/UserMyBooksPage";
 import UserProfilePage from "../features/user/pages/UserProfilePage";
+import Request from "../features/Requests/Request";
 const AppRoutes = () => {
   return (
     <BrowserRouter>
@@ -54,6 +55,16 @@ const AppRoutes = () => {
             <ProtectedRoute role="Admin">
               <AdminLayout>
                 <UsersPage />
+              </AdminLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin-requests"
+          element={
+            <ProtectedRoute role="Admin">
+              <AdminLayout>
+                <Request />
               </AdminLayout>
             </ProtectedRoute>
           }

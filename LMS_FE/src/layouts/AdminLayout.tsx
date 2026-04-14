@@ -69,6 +69,10 @@ const AdminLayout = ({ children }: Props) => {
               <span>🔄</span>
               {!collapsed && <span>Borrow</span>}
             </NavLink>
+            <NavLink to="/admin-requests" className={menuClass}>
+              <span>📩</span>
+              {!collapsed && <span>Requests</span>}
+            </NavLink>
           </nav>
         </div>
 

@@ -1,10 +1,10 @@
 import { useEffect, useState, useRef } from "react";
 import { getAllBooks } from "../../api/booksApi";
 import {
-  borrowBook,
   checkBorrowEligibility,
   searchBooks
 } from "../../../borrow/api/borrowApi";
+import { createBorrowRequest } from "../../../borrow/api/borrowRequest";
 import { getUserFromToken } from "../../../../utils/auth";
 
 const UserBrowseBooksPage = () => {
@@ -63,10 +63,10 @@ const UserBrowseBooksPage = () => {
 
   const handleBorrow = async (bookId: number) => {
     try {
-      const res = await borrowBook({
+      const res = await createBorrowRequest({
         userId,
         bookId,
-        notes: "Borrowed via UI",
+        notes: "Borrow request from UI",
       });
 
       setToast(res.data.message);
