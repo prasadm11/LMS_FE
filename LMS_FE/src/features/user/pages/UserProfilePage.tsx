@@ -48,14 +48,6 @@ const UserProfilePage = () => {
     }
   };
 
-  if (loading || !userData) {
-    return (
-      <div className="flex justify-center py-10">
-        <div className="animate-spin h-8 w-8 border-2 border-white border-t-transparent rounded-full"></div>
-      </div>
-    );
-  }
-
   return (
     <div className="space-y-6">
 
@@ -74,108 +66,116 @@ const UserProfilePage = () => {
         </p>
       </div>
 
-      {/* CARD */}
-      <div className="bg-white/5 backdrop-blur-xl p-6 rounded-xl border border-white/10 space-y-4">
-
-        {/* NAME */}
-        <div>
-          <label className="text-gray-400 text-sm">Full Name</label>
-          {editMode ? (
-            <input
-              className="input mt-1"
-              value={formData.firstName + " " + formData.lastName}
-              onChange={(e) => {
-                const [firstName, lastName] = e.target.value.split(" ");
-                setFormData({ ...formData, firstName, lastName });
-              }}
-            />
-          ) : (
-            <p className="mt-1">
-              {userData.firstName} {userData.lastName}
-            </p>
-          )}
+      {loading || !userData ? (
+        <div className="flex justify-center items-center min-h-[300px]">
+          <div className="animate-spin h-8 w-8 border-2 border-white border-t-transparent rounded-full"></div>
         </div>
+      ) : (
+        <>
+          {/* CARD */}
+          <div className="bg-white/5 backdrop-blur-xl p-6 rounded-xl border border-white/10 space-y-4">
 
-        {/* EMAIL */}
-        <div>
-          <label className="text-gray-400 text-sm">Email</label>
-          {editMode ? (
-            <input
-              className="input mt-1"
-              value={formData.email}
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
-            />
-          ) : (
-            <p className="mt-1">{userData.email}</p>
-          )}
-        </div>
+            {/* NAME */}
+            <div>
+              <label className="text-gray-400 text-sm">Full Name</label>
+              {editMode ? (
+                <input
+                  className="input mt-1"
+                  value={formData.firstName + " " + formData.lastName}
+                  onChange={(e) => {
+                    const [firstName, lastName] = e.target.value.split(" ");
+                    setFormData({ ...formData, firstName, lastName });
+                  }}
+                />
+              ) : (
+                <p className="mt-1">
+                  {userData.firstName} {userData.lastName}
+                </p>
+              )}
+            </div>
 
-        {/* CITY */}
-        <div>
-          <label className="text-gray-400 text-sm">City</label>
-          {editMode ? (
-            <input
-              className="input mt-1"
-              value={formData.city}
-              onChange={(e) =>
-                setFormData({ ...formData, city: e.target.value })
-              }
-            />
-          ) : (
-            <p className="mt-1">{userData.city}</p>
-          )}
-        </div>
+            {/* EMAIL */}
+            <div>
+              <label className="text-gray-400 text-sm">Email</label>
+              {editMode ? (
+                <input
+                  className="input mt-1"
+                  value={formData.email}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
+                />
+              ) : (
+                <p className="mt-1">{userData.email}</p>
+              )}
+            </div>
 
-        {/* PHONE */}
-        <div>
-          <label className="text-gray-400 text-sm">Phone</label>
-          {editMode ? (
-            <input
-              className="input mt-1"
-              value={formData.phoneNumber}
-              onChange={(e) =>
-                setFormData({ ...formData, phoneNumber: e.target.value })
-              }
-            />
-          ) : (
-            <p className="mt-1">{userData.phoneNumber}</p>
-          )}
-        </div>
+            {/* CITY */}
+            <div>
+              <label className="text-gray-400 text-sm">City</label>
+              {editMode ? (
+                <input
+                  className="input mt-1"
+                  value={formData.city}
+                  onChange={(e) =>
+                    setFormData({ ...formData, city: e.target.value })
+                  }
+                />
+              ) : (
+                <p className="mt-1">{userData.city}</p>
+              )}
+            </div>
 
-        {/* ACTIONS */}
-        <div className="flex gap-3 pt-4">
-          {editMode ? (
-            <>
-              <button
-                onClick={handleSave}
-                className="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg"
-              >
-                Save
-              </button>
+            {/* PHONE */}
+            <div>
+              <label className="text-gray-400 text-sm">Phone</label>
+              {editMode ? (
+                <input
+                  className="input mt-1"
+                  value={formData.phoneNumber}
+                  onChange={(e) =>
+                    setFormData({ ...formData, phoneNumber: e.target.value })
+                  }
+                />
+              ) : (
+                <p className="mt-1">{userData.phoneNumber}</p>
+              )}
+            </div>
 
-              <button
-                onClick={() => {
-                  setEditMode(false);
-                  setFormData(userData);
-                }}
-                className="bg-gray-500 hover:bg-gray-600 px-4 py-2 rounded-lg"
-              >
-                Cancel
-              </button>
-            </>
-          ) : (
-            <button
-              onClick={() => setEditMode(true)}
-              className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg"
-            >
-              Edit Profile
-            </button>
-          )}
-        </div>
+            {/* ACTIONS */}
+            <div className="flex gap-3 pt-4">
+              {editMode ? (
+                <>
+                  <button
+                    onClick={handleSave}
+                    className="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg"
+                  >
+                    Save
+                  </button>
 
-      </div>
+                  <button
+                    onClick={() => {
+                      setEditMode(false);
+                      setFormData(userData);
+                    }}
+                    className="bg-gray-500 hover:bg-gray-600 px-4 py-2 rounded-lg"
+                  >
+                    Cancel
+                  </button>
+                </>
+              ) : (
+                <button
+                  onClick={() => setEditMode(true)}
+                  className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg"
+                >
+                  Edit Profile
+                </button>
+              )}
+            </div>
+
+          </div>
+        </>
+      )}
     </div>
   );
 };

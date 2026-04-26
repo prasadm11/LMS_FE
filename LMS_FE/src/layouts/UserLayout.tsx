@@ -90,7 +90,7 @@ const UserLayout = ({ children }: Props) => {
       <div className="flex-1 flex flex-col">
 
         {/* TOPBAR */}
-        <div className="h-14 flex items-center justify-between px-6 border-b border-white/10 bg-white/5 backdrop-blur-xl">
+        <div className="h-15 flex items-center justify-between px-6 border-b border-white/10 bg-white/5 backdrop-blur-xl">
           <h1 className="font-semibold">User Panel</h1>
           <div className="text-sm text-gray-300">
             Welcome, {username}

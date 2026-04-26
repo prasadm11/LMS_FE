@@ -60,13 +60,6 @@ const UserDashboard = () => {
     fetchDashboard();
   }, []);
 
-  if (loading) {
-    return (
-      <div className="flex justify-center py-10 items-center h-full">
-        <div className="animate-spin h-8 w-8 border-2 border-white border-t-transparent rounded-full"></div>
-      </div>
-    );
-  }
 
   return (
     <div className="space-y-8">
@@ -77,6 +70,12 @@ const UserDashboard = () => {
           Overview of your library activity
         </p>
       </div>
+      {loading ? (
+        <div className="flex justify-center py-10 min-h-[50vh]">
+          <div className="animate-spin h-8 w-8 border-2 border-white border-t-transparent rounded-full"></div>
+        </div>
+      ) : (
+        <>
 
       {/* SUMMARY */}
       {summary && (
@@ -202,12 +201,14 @@ const UserDashboard = () => {
         </button>
 
         <button
-          onClick={() => navigate("/user-my-books")}
+          onClick={() => navigate("/user-borrowed")}
           className="bg-green-500 hover:bg-green-600 px-4 py-2 rounded-lg"
         >
           My Books
         </button>
       </div>
+        </>
+      )}
     </div>
   );
 };
